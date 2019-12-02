@@ -112,7 +112,7 @@
         $url .= "@2x.png";
 
         // Création de l'icone
-        $icone = "<img src=\"" . $url . "\" alt=\"" . data['list'][0]['weather'][0]['description'] . "\" />";
+        $icone = "<img src=\"" . $url . "\" alt=\"" . $data['list'][0]['weather'][0]['description'] . "\" />";
 
         return $icone;
     }
@@ -215,14 +215,18 @@
             // Location City
             $row .= "<td>Ville: " . $resultat['location']['city'] . "</td>";
 
-            // Création du lien vers l'API avec le nom de la ville
-            // https://openweathermap.org/current
-            $urlMeteo = "http://api.openweathermap.org/data/2.5/forecast?APPID=XXXXX&q=";
-            $urlMeteo .= urlencode( $resultat['location']['city'] );
+
+            // 1. Création du lien vers l'API avec le nom de la ville
+                // https://openweathermap.org/current
+                $urlMeteo = "http://api.openweathermap.org/data/2.5/forecast?APPID=ca18014071190091d4be752b98e34330&q=";
+                $urlMeteo .= urlencode( $resultat['location']['city'] );
             
-            // Affichage du résultatOpenWeatherAPI
-            $r = makeRequestMeteo( $urlMeteo );
+            // 2. Appel de la fonction qui va aller chercher le temps
+                $r = makeRequestMeteo( $urlMeteo );
+
+            // 3. Affichage du résultatOpenWeatherAPI
             $row .= "<td>" . $r . "</td>";
+            
 
             // Image
             $row .= "<td><img src=\"" . $resultat['picture']['medium'] . "\" /></td>";
