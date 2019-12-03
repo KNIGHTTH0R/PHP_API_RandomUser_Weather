@@ -226,7 +226,7 @@
 
             // 3. Affichage du résultatOpenWeatherAPI
             $row .= "<td>" . $r . "</td>";
-            
+
 
             // Image
             $row .= "<td><img src=\"" . $resultat['picture']['medium'] . "\" /></td>";
@@ -253,6 +253,3 @@
         </table>
     </body>
 </html>
-
-
-
